@@ -28,8 +28,20 @@ class Encounter
 
     def initialize()
         @name = "Friendly Looking Traveller"
-        @encounter_intro = "The #{@name} offers to share their baked cherry pie with you! 
-        They seem to look genuine and happy."
+        @encounter_intro = "The #{@name} offers to share their baked cherry pie with you! They seem to look genuine and happy."
+
+        @options = []
+        @options.push("Gladly accept their offer to share their baked cherry pie.")
+        @options.push("Politely decline.")
+        @options.push("Attack them immediately with all the fury of the elements.")
+        @options.push("Simply walk away.")   
+
+        @consequences = []
+        @consequences.push("You eat the pie, feel woozy, black out, and wake up naked with all your gold having been stolen.")
+        @consequences.push("You walk away.")
+        @consequences.push("You attack and defeat the traveller. Costing 1 stamina and losing 1 health but gaining 10 gold from the bloody corpse of the smiling and non deceased friendly traveller.")
+        @consequences.push("As you walk away the traveller throws the hot pie at you, dealing 1 damage.")
+
         @art = ""\
         "   .------\\ /------.\n"\
         "   |       -       |\n"\
@@ -53,6 +65,19 @@ class Encounter
     def start_encounter(player)
         puts "#{player.name} encounters a #{@name}."
         puts @art
+        puts @encounter_intro
+
+        options_index = 0
+        for option in @options
+            puts "#{options_index + 1}. #{option}"
+            options_index += 1
+        end
+
+        print "Enter your choice: "
+        players_choice = gets.to_i
+        
+        puts @consequences[players_choice - 1]
+
     end
 
 end
