@@ -1,8 +1,8 @@
-require_relative "Encounter" # Paste Encounter.rb here.
+require_relative "ruby-game-encounters/JamesKnightEncounter" # Paste Encounter.rb here.
 require_relative "Player" # Paste Player.rb here.
 
 player = Player.new
-encounter = Encounter.new
+encounter = JamesKnightEncounter.new
 
 while true
     system("clear")
